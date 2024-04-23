@@ -85,7 +85,7 @@ class CarState(CarStateBase):
   def cruise_speed_button(self):
     self.sm.update(0)
     set_speed_kph = self.cruise_set_speed_kph
-    if 0 < round(self.sm['controlsState'].vCruise) < 255:
+    if 1 < round(self.sm['controlsState'].vCruise) < 255:
       set_speed_kph = round(self.sm['controlsState'].vCruise)
 
     if self.cruise_buttons:
@@ -116,7 +116,7 @@ class CarState(CarStateBase):
             self.cruise_set_speed_kph = max(set_speed_kph, int(round(self.clu_Vanz)), (30 if not self.is_set_speed_in_mph else 20))
           return self.cruise_set_speed_kph
 
-      if self.cruise_buttons == Buttons.RES_ACCEL and not self.cruiseState_standstill:   # up 
+      elif self.cruise_buttons == Buttons.RES_ACCEL and not self.cruiseState_standstill:   # up 
         if self.set_spd_five:
           set_speed_kph += 5
           if set_speed_kph % 5 != 0:
