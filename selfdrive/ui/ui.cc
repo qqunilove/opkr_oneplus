@@ -207,9 +207,10 @@ static void update_state(UIState *s) {
     scene.ctrl_speed = scene.controls_state.getSafetySpeed();
     scene.desired_angle_steers = scene.controls_state.getSteeringAngleDesiredDeg();
     scene.gap_by_speed_on = scene.controls_state.getGapBySpeedOn();
-    if (sm.frame % (UI_FREQ / 2) == 0) {
-      scene.steer = scene.controls_state.getSteer();
-    }
+    scene.enabled = scene.controls_state.getEnabled();
+    scene.experimental_mode = scene.controls_state.getExperimentalMode();
+    scene.exp_mode_temp = scene.controls_state.getExpModeTemp();
+    scene.btn_pressing = scene.controls_state.getBtnPressing();
   }
   if (sm.updated("carState")) {
     scene.car_state = sm["carState"].getCarState();
