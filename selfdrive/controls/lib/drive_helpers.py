@@ -122,7 +122,7 @@ def get_lag_adjusted_curvature(CP, v_ego, psis, curvatures, curvature_rates):
 
   v_ego = max(v_ego, 0.1)
   max_curvature_rate = MAX_LATERAL_JERK / (v_ego**2)
-  safe_desired_curvature_rate = clip(desired_curvature_rate * 0.95,
+  safe_desired_curvature_rate = clip(desired_curvature_rate,
                                           -max_curvature_rate,
                                           max_curvature_rate)
   safe_desired_curvature = clip(desired_curvature,
